@@ -32,8 +32,14 @@
 
 <p>
   <strong>User:</strong>
-  <%= @listing.user_id %>
+  <%= @listing.user.email %>
 </p>
+
+<p>
+<%= image_tag @listing.image %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
 <%= link_to 'Back', listings_path %>
