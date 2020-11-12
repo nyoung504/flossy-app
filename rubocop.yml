@@ -1,0 +1,23 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - 'describe'
+    - 'context' 
