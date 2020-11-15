@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, except: [:index, :show]
 
   # GET /listings
   # GET /listings.json
@@ -57,19 +58,25 @@ class ListingsController < ApplicationController
   def destroy
     @listing.destroy
     respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      format.html { redirect_to listings_url, notice: 'Listing was successfully deleted.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_listing
+    @listing = Listing.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def listing_params
-      params.require(:listing).permit(:title, :description, :brand, :price, :size, :category, :user_id, :image)
+  # Only allow a list of trusted parameters through.
+  def listing_params
+    params.require(:listing).permit(:title, :description, :brand, :price, :size, :category, :user_id, :image)
+  end
+
+  def authorize
+    if current_user.buyer?
+      redirect_to listings_path
     end
   end
+end

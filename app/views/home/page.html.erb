@@ -3,8 +3,11 @@
   <p class="lead">Fashion is where you find it. Buy and sell fashion. Get Flossy.</p>
   <hr class="my-4">
   <p>Show your stuff</p>
-  <%= link_to "Add Listing", new_listing_path, class: "btn btn-primary btn-md"%>
-  <%= link_to "Show Listing", item_page_path, class: "btn btn-primary btn-md"%>
+  <% if current_user.seller? %>
+    <%= link_to "Add Listing", new_listing_path, class: "btn btn-primary btn-md"%>
+  <% else %>
+    <%= link_to "Show Listing", item_page_path, class: "btn btn-primary btn-md"%>
+  <% end %>
 <div class="container">
   <%= image_tag "zimmerman1.jpg", class: "home-img"%>
   </div>

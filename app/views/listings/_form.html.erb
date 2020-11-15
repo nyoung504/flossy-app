@@ -8,12 +8,12 @@
     <%= f.input :description %>
     <%= f.input :brand %>
     <%= f.input :price %>
-    <%= f.input :size %>
+    <%= f.input :size, collection: ["S", "M", "L", "XL", "OS", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "Specify in descrption" ] %>
     <%= f.input :category, collection: ["Clothing", "Accessories", "Kids", "Other" ] %>
     <%= f.file_field :image %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "btn-outline-secondary" %>
   </div>
 <% end %>
