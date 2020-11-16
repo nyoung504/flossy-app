@@ -1,18 +1,23 @@
+# frozen_string_literal: true
+
 class ListingsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_action :authorize, except: [:index, :show]
+  before_action :authenticate_user!, only: %i[new create]
+  before_action :set_listing, only: %i[show edit update destroy]
+  before_action :authorize, except: %i[index show]
 
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    if params[:search].present?
+      @listings = Listing.where('title ILIKE ?', "%#{params[:search][:title]}%")
+    else
+     @listings = Listing.all
+    end
   end
 
   # GET /listings/1
   # GET /listings/1.json
-  def show
-  end
+  def show; end
 
   # GET /listings/new
   def new
@@ -20,8 +25,7 @@ class ListingsController < ApplicationController
   end
 
   # GET /listings/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /listings
   # POST /listings.json
@@ -64,6 +68,7 @@ class ListingsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_listing
     @listing = Listing.find(params[:id])
@@ -75,8 +80,6 @@ class ListingsController < ApplicationController
   end
 
   def authorize
-    if current_user.buyer?
-      redirect_to listings_path
-    end
+    redirect_to listings_path if current_user.buyer?
   end
 end
