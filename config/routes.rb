@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'item/page'
-  resources :listings
   devise_for :users
   root 'home#page'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'item/page'
+  resources :listings
+  resources :payments, only: [:create]
+  get '/payments/success', to: 'payments#success'
+  get '/payments/cancel', to: 'payments#cancel'
+  
 end

@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20_201_113_034_115) do
     t.text 'description'
     t.string 'brand'
     t.float 'price'
-    t.text 'size'
+    t.integer 'size'
     t.string 'category'
     t.bigint 'user_id', null: false
     t.datetime 'created_at', precision: 6, null: false

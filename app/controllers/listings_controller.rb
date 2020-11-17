@@ -8,11 +8,11 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    if params[:search].present?
-      @listings = Listing.where('title ILIKE ?', "%#{params[:search][:title]}%")
-    else
-     @listings = Listing.all
-    end
+    @listings = if params[:search].present?
+                  Listing.where('title ILIKE ?', "%#{params[:search][:title]}%")
+                else
+                  Listing.all
+                end
   end
 
   # GET /listings/1
