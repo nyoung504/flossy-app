@@ -1,5 +1,8 @@
 class PaymentsController < ApplicationController
+  before_action :authenticate_user!, except: [:webhook]
   skip_before_action :verify_authenticity_token, only: [:create]
+  byebug
+ 
 
   def create
     listing = Listing.find(params[:id])
@@ -22,6 +25,12 @@ class PaymentsController < ApplicationController
     render json: { id: session.id }
   end
 
+  def webhook
+    payload = request.body.read
+    puts payload.inspect
+
+  end
+  
   def success 
     @listing = Listing.find(params[:listing_id])
   end

@@ -67,6 +67,10 @@ class ListingsController < ApplicationController
     end
   end
 
+  def page
+    @listings = Listing.all
+  end
+  
   private
 
   # Use callbacks to share common setup or constraints between actions.
