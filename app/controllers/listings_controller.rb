@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   before_action :set_listing, only: %i[show edit update destroy]
@@ -67,7 +66,7 @@ class ListingsController < ApplicationController
     end
   end
 
-  def page
+  def cards
     @listings = Listing.all
   end
   

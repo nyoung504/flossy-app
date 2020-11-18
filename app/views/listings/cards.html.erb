@@ -10,7 +10,7 @@
           <p class="card-text item-description"><%= listing.description %></p>
           <p class="card-text">$<%= listing.price %>
           <%= link_to "See More", listing_path(listing.id), class:"btn btn-primary btn-right" %>
-          <button id="stripe">Buy</button>
+          <button class="stripe" data-id="<%= listing.id %>">Buy</button>
           </p>
         </div>
       </div>

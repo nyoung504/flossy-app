@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'home#page'
-  get 'item/page'
+  get '/listings/cards', to: 'listings#cards'
   resources :listings
   resources :payments, only: [:create]
   get '/payments/success', to: 'payments#success'
