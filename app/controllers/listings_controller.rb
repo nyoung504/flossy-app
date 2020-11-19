@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   before_action :set_listing, only: %i[show edit update destroy]
@@ -68,7 +70,7 @@ class ListingsController < ApplicationController
   def cards
     @listings = Listing.all
   end
-  
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
