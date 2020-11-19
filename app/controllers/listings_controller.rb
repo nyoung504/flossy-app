@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   before_action :set_listing, only: %i[show edit update destroy]
@@ -83,6 +82,6 @@ class ListingsController < ApplicationController
   end
 
   def authorize
-    redirect_to listings_path if current_user.buyer?
+    redirect_to listings_cards_path if current_user.buyer?
   end
 end
