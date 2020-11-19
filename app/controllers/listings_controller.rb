@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
   before_action :set_listing, only: %i[show edit update destroy]
-  before_action :authorize, except: %i[index show]
+  before_action :authorize, except: %i[index show cards]
 
   # GET /listings
   # GET /listings.json
@@ -82,6 +82,6 @@ class ListingsController < ApplicationController
   end
 
   def authorize
-    redirect_to listings_cards_path if current_user.buyer?
+    redirect_to listings_cards_path unless current_user.buyer?
   end
 end
