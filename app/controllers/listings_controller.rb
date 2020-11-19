@@ -82,6 +82,6 @@ class ListingsController < ApplicationController
   end
 
   def authorize
-    redirect_to listings_cards_path unless current_user.buyer?
+    redirect_to listings_cards_path if current_user.buyer?
   end
 end
