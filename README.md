@@ -21,4 +21,11 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
+* To login in as a seller on https://flossyapp789.herokuapp.com/, you can use:
+username: tests@email.com 
+password: pass789
+
+* To login in as a buyer on https://flossyapp789.herokuapp.com/, you can use:
+username: testb@email.com 
+password: pass789
+
